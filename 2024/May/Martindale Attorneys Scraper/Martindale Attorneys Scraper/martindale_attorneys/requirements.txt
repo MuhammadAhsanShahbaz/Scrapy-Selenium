@@ -1,0 +1,2 @@
+Scrapy
+scrapeops_scrapy_proxy_sdk

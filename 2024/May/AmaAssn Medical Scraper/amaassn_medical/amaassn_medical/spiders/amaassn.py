@@ -132,6 +132,7 @@ class AmaassnSpider(Spider):
     def get_overview_detail(self, response, included, data):
         try:
             item = OrderedDict()
+
             item['Program ID'] = self.get_value_from_included(included[1], 'field_program_id')
             item['Description'] = self.get_value_from_included(included[1], 'field_program_best_described_as')
             item[
@@ -173,6 +174,7 @@ class AmaassnSpider(Spider):
             self.overview_counter += 1
             print(f"Overview Counter : {self.overview_counter}")
             self.table_overview_records.append(item)
+
         except Exception as e:
             self.error.append(f"Overview Record not insert : {response.meta.get('program_name', '')} error: {e}")
 
