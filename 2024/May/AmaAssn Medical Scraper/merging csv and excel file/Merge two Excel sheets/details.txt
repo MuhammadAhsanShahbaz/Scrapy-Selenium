@@ -1,0 +1,6 @@
+Merge Two Excel sheets (One is CSV and the other one is XLSX) into one single XLSX file.
+Merge them based on Address and Owner name
+
+Data set A is property information and includes owner name and mailing address.
+
+Data Set B is skip tracing data ie the owners contact info address, email, phone numbers etc
