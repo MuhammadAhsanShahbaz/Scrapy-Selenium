@@ -21,9 +21,9 @@ class Merging:
         with open(json_file, 'r') as file:
             json_data = json.load(file)
             try:
-                self.average_price = int(float(json_data.get('Average Price Per Acre').replace('$', '').replace(',', '')))
-                self.low_range = int(json_data.get('Low Range %').replace('%', ''))
-                self.high_range = int(json_data.get('High Range %').replace('%', ''))
+                self.average_price = int(float(json_data.get('Average Price Per Acre', '').replace('$', '').replace(',', '')))
+                self.low_range = int(json_data.get('Low Range %', '').replace('%', ''))
+                self.high_range = int(json_data.get('High Range %', '').replace('%', ''))
             except ValueError:
                 self.average_price = 0
                 self.low_range = 0

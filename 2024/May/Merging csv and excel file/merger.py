@@ -1,9 +1,9 @@
 import csv
 import json
 import os
+from copy import deepcopy
 
 from openpyxl import load_workbook
-from copy import deepcopy
 
 
 class Merger:
@@ -151,14 +151,14 @@ class Merger:
         merged_data = []
 
         for owner_row in self.owners_info:
-            info_key = (owner_row.get('Input Property Address').strip() + owner_row
-                        .get('Input First Name').strip() + owner_row.get('Input Last Name').strip())
+            info_key = (owner_row.get('Input Property Address', '').strip() + owner_row
+                        .get('Input First Name', '').strip() + owner_row.get('Input Last Name', '').strip())
 
             owner_data[info_key] = owner_row
 
         for prop_row in self.property_info:
-            owner_key = (prop_row.get('Address').strip() + prop_row.get('Owner 1 First Name').strip()
-                         + prop_row.get('Owner 1 Last Name').strip())
+            owner_key = (prop_row.get('Address', '').strip() + prop_row.get('Owner 1 First Name', '').strip()
+                         + prop_row.get('Owner 1 Last Name', '').strip())
             owner_info = owner_data.get(owner_key)
 
             if not owner_info:
@@ -179,9 +179,9 @@ class Merger:
         except (ValueError, AttributeError):
             return {}
 
-        per_acre_price = self.user_inputs.get('Average Price Per Acre')
-        low_percentage = self.user_inputs.get('Low Range %')
-        high_percentage = self.user_inputs.get('High Range %')
+        per_acre_price = self.user_inputs.get('Average Price Per Acre', '')
+        low_percentage = self.user_inputs.get('Low Range %', '')
+        high_percentage = self.user_inputs.get('High Range %', '')
 
         acre_value = round(lot / 43560, 2)
         ratio = (lot / 43560) * per_acre_price
@@ -211,19 +211,19 @@ class Merger:
         seen_rows = set()
 
         print('Removing duplicated data:')
-        duplciates_removed_count = 0
+        duplicates_removed_count = 0
 
         for row in rows:
             row_data = ''.join([str(v) for v in row.values()])
 
             if row_data in seen_rows:
-                duplciates_removed_count += 1
+                duplicates_removed_count += 1
                 continue
 
             seen_rows.add(row_data)
             unique_rows.append(row)
 
-        print(f'{duplciates_removed_count} are removed')
+        print(f'{duplicates_removed_count} are removed')
         return unique_rows
 
     def write_to_csv(self, data):
