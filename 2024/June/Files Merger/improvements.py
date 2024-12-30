@@ -24,7 +24,7 @@ class Merger:
                     self.remove_duplication(data, file)
 
         if file_type == 'master':
-            return [d['APN'] for d in data if 'APN' in d]
+            return [row.get('APN', '') for row in data if 'APN' in row]
 
         return
 
@@ -77,9 +77,9 @@ class Merger:
         filtered_data = []
         duplication_count = 0
 
-        for d in data:
-            if d.get('APN') not in self.master_apn_info:
-                filtered_data.append(d)
+        for row in data:
+            if row.get('APN', '') not in self.master_apn_info:
+                filtered_data.append(row)
 
             else:
                 duplication_count = duplication_count + 1
