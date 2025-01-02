@@ -1,0 +1,8 @@
+Need to get some specific details from the pdf files. 
+
+I highlight fields I need in this image. (most important is the Title field)
+
+Also need the DATE from the file name itself
+
+
+
