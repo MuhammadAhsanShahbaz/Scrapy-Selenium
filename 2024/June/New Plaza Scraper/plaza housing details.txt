@@ -1,0 +1,24 @@
+I am looking for housing on this website
+https://plaza.newnewnew.space/
+
+Login:
+Adama21:C@lamite21
+
+
+
+And I want a bot/script that can automate refreshing of the page per second and react to housing with my account the quickest possible way
+
+3 steps : First mind the filter, secondly refresh and whenever there is new housing available on my filter react to it
+
+
+After login, 
+1- Choose Rental Offer (translated to English)
+2- Set Location to "Noord-Brabant"
+3- Refresh the page every second
+4- If there is any listing to which I have not responded, then select it. (This text "Je hebt gereageerd." means already responded. You have to ignore these listings)
+5- After selecting the listing, scroll down to bottom and click on "Reageer" button to respond. 
+
+Repeat these steps (3-5) every second. 
+
+
+

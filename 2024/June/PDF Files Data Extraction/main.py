@@ -24,6 +24,7 @@ class PdfDataExtraction:
             text = page.get_text()
 
             item = OrderedDict()
+
             item['Date'] = self.get_date_from_file_name(pdf_file)
             item['Name'] = pdf_file.replace('input\\', '')
 
@@ -62,6 +63,7 @@ class PdfDataExtraction:
 
     def get_last_data(self, data):
         text = []
+
         for index, d in enumerate(data[29:], start=29):
             if 'PLAINTIFF' in d:
                 for tex in data[index:]:
